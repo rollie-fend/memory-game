@@ -51,6 +51,48 @@ shuffleSuit();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
+*/
+
+/*
+ * the deck element is the ancestor of the cards; using event delegation,
+
+ * the eventListener attaches to each card
+
+ * the eventListener's function that fires when a card is clicked is displayCard()
+ 
+*/
+
+
+
+deck.addEventListener('click', displayCard, false);
+
+
+
+function displayCard(e) {
+
+    var clickedItem = e.target;
+
+    if (clickedItem !== e.currentTarget) {
+
+        openCard(clickedItem);
+
+    }
+
+}
+
+
+
+function openCard(card) {
+
+    card.classList.toggle('open');
+
+    card.classList.toggle('show');
+
+}
+
+
+
+/*
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
