@@ -66,19 +66,28 @@ shuffleSuit();
 
 deck.addEventListener('click', displayCard, false);
 
+// limit to two at a time the cards that can be clicked
+
 
 
 function displayCard(e) {
 
     var clickedItem = e.target;
 
-    if (clickedItem !== e.currentTarget) {
+    if (clickedItem !== e.currentTarget &&
+ 
+       loggedCard.length < 2 &&
 
-        openCard(clickedItem);
+        clickedItem !== loggedCard[0]) {
 
-    }
+            openCard(clickedItem);
+
+            logOpenCard(clickedItem);  // this function records the cards that have been clicked
+ 
+   }
 
 }
+
 
 
 
@@ -94,6 +103,19 @@ function openCard(card) {
 
 /*
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+*/
+
+let loggedCard = []; // this will hold the cards that have been clicked
+
+
+
+function logOpenCard(card) {
+
+    loggedCard.push(card);
+
+}
+
+/*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
