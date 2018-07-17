@@ -109,6 +109,10 @@ const restart = document.querySelector(".restart");
 restart.addEventListener('click', restartGame, false);
 
 function restartGame() {
+    if (popupOn == true) {
+        showPopup();
+        popupOn = false;
+    }
     match = 0;
     time = 0;
     shuffleSuit();
