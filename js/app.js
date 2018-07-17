@@ -111,6 +111,7 @@ function restartGame() {
     match = 0;
     time = 0;
     shuffleSuit();
+    resetMove();
     timeLapse=setInterval(startTimer,1000);
     if (timerOn == true) {
         stopTimer();
@@ -172,6 +173,11 @@ function checkMatch() {
 
 function addMove() {
     move++;
+    document.querySelector('.moves').textContent = move;
+}
+
+function resetMove() {
+    move = 0;
     document.querySelector('.moves').textContent = move;
 }
 
