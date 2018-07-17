@@ -18,6 +18,7 @@ let loggedCard = []; // this will hold the cards that have been clicked
 let move = 0;
 let popupOn = false;
 let score = 3;       // the highest score is three (stars)
+const stars = document.querySelectorAll('.stars li');
 
 /*
  * Display the cards on the page
@@ -116,8 +117,10 @@ function restartGame() {
     }
     match = 0;
     time = 0;
+    score = 3;
     shuffleSuit();
     resetMove();
+    showStars();
     timeLapse=setInterval(startTimer,1000);
     if (timerOn == true) {
         stopTimer();
@@ -227,7 +230,6 @@ function setScore() {
 }
 
 /*
- *  Note: the showStars function is nonexistent yet
  *  Relate this function to the addMOve() function; as the njumber of move increases,
  *  the score (or number of stars) decreases
  */
@@ -240,6 +242,21 @@ function showPopup() {
     }
     const popup = document.querySelector(".congrats-popup");
     popup.classList.toggle("hide");
+}
+
+
+//  Use this function when resetting a game
+
+function showStars() {
+    let starCounter = 0;
+    for (star of stars) {
+        if (starCounter < score) {
+            star.style.display = 'inline';
+        }else{
+            star.style.display = 'none';
+        }
+        starCounter++;
+    }
 }
 
 const cancel = document.querySelector(".cancel-button");
