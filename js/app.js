@@ -68,11 +68,11 @@ deck.addEventListener('click', displayCard, false);
 function displayCard(e) {
     var clickedItem = e.target;
     if (clickedItem !== e.currentTarget &&
-        loggedCard.length < 2 &&
+       loggedCard.length < 2 &&
         clickedItem !== loggedCard[0]) {
             openCard(clickedItem);
             logOpenCard(clickedItem);  // this function records the cards that have been clicked
-    }
+   }
 }
 
 function openCard(card) {
@@ -89,6 +89,7 @@ let loggedCard = []; // this will hold the cards that have been clicked
 /*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  */
 
 let match = 0;
@@ -134,13 +135,28 @@ function checkMatch() {
         setTimeout(openCard.bind(null,loggedCard[1]), 1000);
     }
     loggedCard=[];
+    addMove();
     if (match == 8) {
         endGame();
     }
 }
 
 /*
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ */
+
+let move = 0;
+
+/*    (I combined the incrementor and display in one function - addMove())
+ *    the appropriate location to execute this is after clicking two cards 
+ *    (a move should be equivalent to clicking a pair of cards)
+ */
+
+function addMove() {
+    move++;
+    document.querySelector('.moves').textContent = move;
+}
+
+/*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
