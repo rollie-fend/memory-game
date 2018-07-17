@@ -68,11 +68,11 @@ deck.addEventListener('click', displayCard, false);
 function displayCard(e) {
     var clickedItem = e.target;
     if (clickedItem !== e.currentTarget &&
-       loggedCard.length < 2 &&
+        loggedCard.length < 2 &&
         clickedItem !== loggedCard[0]) {
             openCard(clickedItem);
             logOpenCard(clickedItem);  // this function records the cards that have been clicked
-   }
+    }
 }
 
 function openCard(card) {
@@ -93,6 +93,13 @@ let loggedCard = []; // this will hold the cards that have been clicked
  */
 
 let match = 0;
+let time = 0;
+let min = 0;
+let sec = 0;
+let timerOn = false;
+let finalTime;
+let timeLapse=setInterval(startTimer,1000);
+
 restartGame();
 
 function restartGame() {
@@ -155,6 +162,19 @@ let move = 0;
 function addMove() {
     move++;
     document.querySelector('.moves').textContent = move;
+}
+
+function startTimer() {
+    timerOn = true;
+    time++;
+    min = Math.floor(time/60);
+    sec = time%60;
+    if (sec < 10) {
+        document.querySelector('.clock').textContent=`${min}:0${sec}`;
+    } else {
+        document.querySelector('.clock').textContent=`${min}:${sec}`;
+    }
+    finalTime=document.querySelector('.clock').textContent;
 }
 
 /*
