@@ -215,9 +215,11 @@ function stopTimer() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-function endGame() {
+ function endGame() {
     stopTimer();
+    setScore()
     showPopup();
+    showMessage()
 }
 
 function setScore() {
@@ -257,6 +259,14 @@ function showStars() {
         }
         starCounter++;
     }
+}
+
+//  Use this function at the end of the game
+
+function showMessage() {
+    document.querySelector('.time').textContent=`Time    :    ${finalTime}`;
+    document.querySelector('.move').textContent=`Moves : ${move}`;
+    document.querySelector('.score').textContent=`Your score :  ${score}  stars`;
 }
 
 const cancel = document.querySelector(".cancel-button");
