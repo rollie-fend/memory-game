@@ -5,7 +5,7 @@
  
 const cardList = Array.from(document.querySelectorAll('.card'));
 
-const deck = document.querySelector(".deck");
+const deck = document.querySelector('.deck');
 
 let match = 0;
 let time = 0;
@@ -31,11 +31,11 @@ const stars = document.querySelectorAll('.stars li');
 function shuffleSuit() {
     let shuffledSuit = shuffle(cardList);
     for (card of shuffledSuit) {
-        if (card.className === "card open show") {
+        if (card.className === 'card open show') {
             card.classList.toggle('open');
             card.classList.toggle('show');
         }else{
-            if (card.className === "card match") {
+            if (card.className === 'card match') {
                 card.classList.toggle('match');
             }
         } 
@@ -107,7 +107,7 @@ function openCard(card) {
 
 restartGame();
 
-const restart = document.querySelector(".restart");
+const restart = document.querySelector('.restart');
 restart.addEventListener('click', restartGame, false);
 
 function restartGame() {
@@ -137,15 +137,15 @@ function logOpenCard(card) {
 
 /*  function checkMatch() - definition of function that checks if the two clicked cards match
  *      - if cards match:
- *        1) their "match", "open" and "show" properties are toggled so that they they remain face up and  
+ *        1) their 'match', 'open' and 'show' properties are toggled so that they they remain face up and  
  *        no longer clickable
  *        2) the variable match is incremented (there are only a maximum lf 8 matches to end the game)
  *      - if the cards do not match:
  *        the openCard() function is executed after a delay of 1 second
  *      - whether the cards match or not, the loggedCard array is emptied
  *      - if the value of match equals 8, the game is ended, another function is executed for this purpose
+ *        (endGame() is not yet available)
  */
-
 function checkMatch() {
     if (
         loggedCard[0].firstElementChild.className ==
@@ -242,8 +242,8 @@ function showPopup() {
     } else {
         popupOn = true;
     }
-    const popup = document.querySelector(".congrats-popup");
-    popup.classList.toggle("hide");
+    const popup = document.querySelector('.congrats-popup');
+    popup.classList.toggle('hide');
 }
 
 
@@ -269,10 +269,10 @@ function showMessage() {
     document.querySelector('.score').textContent=`Your score :  ${score}  stars`;
 }
 
-const cancel = document.querySelector(".cancel-button");
+const cancel = document.querySelector('.cancel-button');
 cancel.addEventListener('click', showPopup, false);
 
 // This just toggles the popup (hides it) which is shown at the end of the game
 
-const replay = document.querySelector(".replay-button");
+const replay = document.querySelector('.replay-button');
 replay.addEventListener('click', restartGame, false);
