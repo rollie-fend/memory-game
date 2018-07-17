@@ -68,7 +68,7 @@ deck.addEventListener('click', displayCard, false);
 function displayCard(e) {
     var clickedItem = e.target;
     if (clickedItem !== e.currentTarget &&
-        loggedCard.length < 2 &&
+       loggedCard.length < 2 &&
         clickedItem !== loggedCard[0]) {
             openCard(clickedItem);
             logOpenCard(clickedItem);  // this function records the cards that have been clicked
@@ -108,7 +108,13 @@ restart.addEventListener('click', restartGame, false);
 
 function restartGame() {
     match = 0;
+    time = 0;
     shuffleSuit();
+    timeLapse=setInterval(startTimer,1000);
+    if (timerOn == true) {
+        stopTimer();
+    }
+    startTimer();
 }
 
 function logOpenCard(card) {
