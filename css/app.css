@@ -107,3 +107,66 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+.congrats-popup {
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.3);
+}
+
+.popup-view {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    top: 44.5%;
+    left: 39.5%;
+    background: #ff99ff;
+}
+
+.popup-title {
+    font-size: 1.5rem;
+}
+
+.popup-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.popup-exit {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.popup-message {
+    align-items: center;
+    width: 250px;
+    padding: 0 10px;
+    margin: 0 80px 0 10px;
+}
+
+.time,
+.move {
+    align-items: center;
+    width: 80px;
+    margin: 0 120px 0 80px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+.popup-button {
+    width: 70px;
+    height: 30px;
+}
+
+.hide {
+    display: none;
+}

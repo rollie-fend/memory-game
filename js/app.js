@@ -16,6 +16,7 @@ let finalTime;
 let timeLapse;
 let loggedCard = []; // this will hold the cards that have been clicked
 let move = 0;
+let popupOn = false;
 
 /*
  * Display the cards on the page
@@ -135,7 +136,6 @@ function logOpenCard(card) {
  *        the openCard() function is executed after a delay of 1 second
  *      - whether the cards match or not, the loggedCard array is emptied
  *      - if the value of match equals 8, the game is ended, another function is executed for this purpose
- *        (endGame() is not yet available)
  */
 
 function checkMatch() {
@@ -203,3 +203,19 @@ function stopTimer() {
 /*
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function endGame() {
+    stopTimer();
+    showPopup();
+}
+
+
+function showPopup() {
+    if (popupOn == true) {
+        popupOn = false;
+    } else {
+        popupOn = true;
+    }
+    const popup = document.querySelector(".congrats-popup");
+    popup.classList.toggle("hide");
+}
