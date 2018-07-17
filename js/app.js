@@ -68,11 +68,11 @@ deck.addEventListener('click', displayCard, false);
 function displayCard(e) {
     var clickedItem = e.target;
     if (clickedItem !== e.currentTarget &&
-        loggedCard.length < 2 &&
+       loggedCard.length < 2 &&
         clickedItem !== loggedCard[0]) {
             openCard(clickedItem);
             logOpenCard(clickedItem);  // this function records the cards that have been clicked
-    }
+   }
 }
 
 function openCard(card) {
@@ -175,6 +175,12 @@ function startTimer() {
         document.querySelector('.clock').textContent=`${min}:${sec}`;
     }
     finalTime=document.querySelector('.clock').textContent;
+}
+
+function stopTimer() {
+    clearInterval(timeLapse);
+    document.querySelector('.clock').textContent=finalTime;
+    timerOn = false;
 }
 
 /*
