@@ -102,11 +102,11 @@ function openCard(card) {
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  */
 
+
 restartGame();
 
 const restart = document.querySelector(".restart");
 restart.addEventListener('click', restartGame, false);
-
 
 function restartGame() {
     match = 0;
@@ -219,3 +219,8 @@ function showPopup() {
     const popup = document.querySelector(".congrats-popup");
     popup.classList.toggle("hide");
 }
+
+const cancel = document.querySelector(".cancel-button");
+cancel.addEventListener('click', showPopup, false);
+
+// This just toggles the popup (hides it) which is shown at the end of the game
