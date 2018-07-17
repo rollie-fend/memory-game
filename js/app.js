@@ -72,7 +72,7 @@ function displayCard(e) {
         clickedItem !== loggedCard[0]) {
             openCard(clickedItem);
             logOpenCard(clickedItem);  // this function records the cards that have been clicked
-   }
+    }
 }
 
 function openCard(card) {
@@ -92,6 +92,12 @@ let loggedCard = []; // this will hold the cards that have been clicked
  */
 
 let match = 0;
+restartGame();
+
+function restartGame() {
+    match = 0;
+    shuffleSuit();
+}
 
 function logOpenCard(card) {
     loggedCard.push(card);
@@ -111,6 +117,7 @@ function logOpenCard(card) {
  *      - if the value of match equals 8, the game is ended, another function is executed for this purpose
  *        (endGame() is not yet available)
  */
+
 function checkMatch() {
     if (
         loggedCard[0].firstElementChild.className ==
@@ -131,6 +138,7 @@ function checkMatch() {
         endGame();
     }
 }
+
 /*
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
