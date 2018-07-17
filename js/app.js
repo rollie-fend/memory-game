@@ -17,6 +17,7 @@ let timeLapse;
 let loggedCard = []; // this will hold the cards that have been clicked
 let move = 0;
 let popupOn = false;
+let score = 3;       // the highest score is three (stars)
 
 /*
  * Display the cards on the page
@@ -178,6 +179,9 @@ function checkMatch() {
 function addMove() {
     move++;
     document.querySelector('.moves').textContent = move;
+    if (move == 15 || move == 20) {
+        setScore();
+    }
 }
 
 function resetMove() {
@@ -213,6 +217,20 @@ function endGame() {
     showPopup();
 }
 
+function setScore() {
+    if (move == 15) {
+        score = 2;
+    }else if (move == 20) {
+            score = 1;
+    }
+    showStars();		
+}
+
+/*
+ *  Note: the showStars function is nonexistent yet
+ *  Relate this function to the addMOve() function; as the njumber of move increases,
+ *  the score (or number of stars) decreases
+ */
 
 function showPopup() {
     if (popupOn == true) {
