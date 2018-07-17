@@ -7,6 +7,16 @@ const cardList = Array.from(document.querySelectorAll('.card'));
 
 const deck = document.querySelector(".deck");
 
+let match = 0;
+let time = 0;
+let min = 0;
+let sec = 0;
+let timerOn = false;
+let finalTime;
+let timeLapse;
+let loggedCard = []; // this will hold the cards that have been clicked
+let move = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -84,21 +94,12 @@ function openCard(card) {
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  */
 
-let loggedCard = []; // this will hold the cards that have been clicked
 
 /*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  */
-
-let match = 0;
-let time = 0;
-let min = 0;
-let sec = 0;
-let timerOn = false;
-let finalTime;
-let timeLapse=setInterval(startTimer,1000);
 
 restartGame();
 
@@ -162,7 +163,7 @@ function checkMatch() {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  */
 
-let move = 0;
+
 
 /*    (I combined the incrementor and display in one function - addMove())
  *    the appropriate location to execute this is after clicking two cards 
