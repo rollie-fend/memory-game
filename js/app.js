@@ -224,3 +224,6 @@ const cancel = document.querySelector(".cancel-button");
 cancel.addEventListener('click', showPopup, false);
 
 // This just toggles the popup (hides it) which is shown at the end of the game
+
+const replay = document.querySelector(".replay-button");
+replay.addEventListener('click', restartGame, false);
