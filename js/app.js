@@ -51,73 +51,87 @@ shuffleSuit();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
-*/
+ */
 
 /*
  * the deck element is the ancestor of the cards; using event delegation,
-
  * the eventListener attaches to each card
-
  * the eventListener's function that fires when a card is clicked is displayCard()
  
 */
-
-
 
 deck.addEventListener('click', displayCard, false);
 
 // limit to two at a time the cards that can be clicked
 
 
-
 function displayCard(e) {
-
     var clickedItem = e.target;
-
     if (clickedItem !== e.currentTarget &&
- 
-       loggedCard.length < 2 &&
-
+        loggedCard.length < 2 &&
         clickedItem !== loggedCard[0]) {
-
             openCard(clickedItem);
-
             logOpenCard(clickedItem);  // this function records the cards that have been clicked
- 
    }
-
 }
-
-
-
 
 function openCard(card) {
-
     card.classList.toggle('open');
-
     card.classList.toggle('show');
-
 }
-
-
 
 /*
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-*/
+ */
 
 let loggedCard = []; // this will hold the cards that have been clicked
-
-
-
-function logOpenCard(card) {
-
-    loggedCard.push(card);
-
-}
 
 /*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ */
+
+let match = 0;
+
+function logOpenCard(card) {
+    loggedCard.push(card);
+    if (loggedCard.length == 2) {
+        checkMatch(loggedCard);
+    }
+}
+
+/*  function checkMatch() - definition of function that checks if the two clicked cards match
+ *      - if cards match:
+ *        1) their "match", "open" and "show" properties are toggled so that they they remain face up and  
+ *        no longer clickable
+ *        2) the variable match is incremented (there are only a maximum lf 8 matches to end the game)
+ *      - if the cards do not match:
+ *        the openCard() function is executed after a delay of 1 second
+ *      - whether the cards match or not, the loggedCard array is emptied
+ *      - if the value of match equals 8, the game is ended, another function is executed for this purpose
+ *        (endGame() is not yet available)
+ */
+function checkMatch() {
+    if (
+        loggedCard[0].firstElementChild.className ==
+        loggedCard[1].firstElementChild.className
+    ) {
+        loggedCard[0].classList.toggle('match');
+        loggedCard[1].classList.toggle('match');
+        openCard(loggedCard[0]);
+        openCard(loggedCard[1]);
+        match++;
+       }
+    else {
+        setTimeout(openCard.bind(null,loggedCard[0]), 1000);
+        setTimeout(openCard.bind(null,loggedCard[1]), 1000);
+    }
+    loggedCard=[];
+    if (match == 8) {
+        endGame();
+    }
+}
+/*
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
